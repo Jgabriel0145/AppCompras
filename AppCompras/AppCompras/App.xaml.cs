@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using AppCompras.Views;
+
 namespace AppCompras
 {
     public partial class App : Application
@@ -10,7 +12,7 @@ namespace AppCompras
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Formulario();
         }
 
         protected override void OnStart()
