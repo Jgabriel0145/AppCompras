@@ -33,7 +33,7 @@ namespace AppCompras
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Formulario());
+            MainPage = new NavigationPage(new Listagem());
         }
 
         protected override void OnStart()
