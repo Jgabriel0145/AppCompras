@@ -14,32 +14,36 @@ namespace AppCompras.Helper
 
         public SQLiteDatabaseHelper(string path)
         {
-
+            _conexao = new SQLiteAsyncConnection(path);
+            _conexao.CreateTableAsync<Produto>().Wait();
         }
 
-        public void Insert(Produto p)
+        public Task<int> Insert(Produto p)
         {
-
+            return _conexao.InsertAsync(p);
         }
 
         public void Update(Produto p)
         {
+            string sql = "UPDATE Produto SET nome = ?, quantidade = ?, preco = ? WHERE id = ?";
+
+            _conexao.QueryAsync<Produto>(sql, p.nome, p.quantidade, p.preco, p.id);
 
         }
 
         public Task<List<Produto>> Select()
         {
-            return new List<Produto>();
+            return _conexao.Table<Produto>().ToListAsync();
         }
 
-        public Task<Produto> GetById(int id)
+        /*public Task<Produto> GetById(int id)
         {
             return new Produto();
-        }
+        }*/
 
-        public void Delete(int id)
+        public Task<int> Delete(int id)
         {
-
+            return _conexao.Table<Produto>().DeleteAsync(i => i.id == id);
         }
     }
 }
