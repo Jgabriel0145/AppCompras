@@ -17,6 +17,8 @@
             <Label Text="Valor Unitário:" FontSize="Medium" TextColor="Black"/>
             <Entry Keyboard="Numeric"/>
 
+            <Button />
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
