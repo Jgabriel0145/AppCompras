@@ -59,9 +59,21 @@ namespace AppCompras.Views
             }
         }
 
-        private void miExcluir_Clicked(object sender, EventArgs e)
+        private async void miExcluir_Clicked(object sender, EventArgs e)
         {
+            MenuItem disparador = (MenuItem)sender;
 
+            Produto produto_selecionado = (Produto)disparador.BindingContext;
+
+            bool confirmacao = await DisplayAlert("Exclusão", "Deseja excluir o produto?", "Sim", "Não");
+        
+            if (confirmacao)
+            {
+                await App.Database.Delete(produto_selecionado.id);
+
+                lista_produtos.Remove(produto_selecionado);
+            }
+        
         }
     }
 }
