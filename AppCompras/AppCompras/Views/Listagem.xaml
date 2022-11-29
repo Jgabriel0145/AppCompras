@@ -2,11 +2,52 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppCompras.Views.Listagem"
-             Title="Lista de Compras">
+             Title="Lista de Compras"
+             BackgroundColor="Snow">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Novo" x:Name="tbNovo" Clicked="tbNovo_Clicked" />
+        <ToolbarItem Text="Somar" x:Name="tbSomar" Clicked="tbSomar_Clicked" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout>
 
-            <Label Text="Teste"/>
+            <SearchBar x:Name="txt_pesquisa" Placeholder="Digite o nome do produto que deseja procurar..."/>
+
+            <RefreshView x:Name="ref_carregando" IsRefreshing="True">
+
+                <ListView x:Name="lst_produtos">
+                    <ListView.Header>
+                        <Grid RowDefinitions="Auto" ColumnDefinitions="*, Auto, Auto">
+                            
+                            <Label Grid.Row="0" Grid.Column="0" Text="Produto" TextColor="Black"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Qtd" TextColor="Black"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Preço" TextColor="Black"/>
+                        
+                        </Grid>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.ContextActions>
+                                    <MenuItem Text="Excluir" x:Name="miExcluir" Clicked="miExcluir_Clicked"/>
+                                </ViewCell.ContextActions>
+                                
+                                <Grid RowDefinitions="Auto" ColumnDefinitions="*, Auto, Auto">
+
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding nome}" TextColor="Black"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding quantidade}" TextColor="Black"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding preco}" TextColor="Black"/>
+                                
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </RefreshView>
 
         </StackLayout>
     </ContentPage.Content>

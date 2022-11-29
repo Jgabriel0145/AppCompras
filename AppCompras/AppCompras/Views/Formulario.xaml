@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppCompras.Views.Formulario">
+             x:Class="AppCompras.Views.Formulario"
+             Title="Adicionar produtos"
+             BackgroundColor="Snow">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Salvar" x:Name="tbSalvar" Clicked="tbSalvar_Clicked" />
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout Padding="10">
             
@@ -9,15 +16,13 @@
                    HorizontalOptions="Center" TextColor="Black"/>
 
             <Label Text="Produto:" FontSize="Medium" TextColor="Black"/>
-            <Entry ClearButtonVisibility="WhileEditing"/>
+            <Entry x:Name="txt_nome" ClearButtonVisibility="WhileEditing" TextColor="Black"/>
 
             <Label Text="Quantidade:" FontSize="Medium" TextColor="Black"/>
-            <Entry Keyboard="Numeric"/>
+            <Entry x:Name="txt_quantidade" TextColor="Black"/>
 
-            <Label Text="Valor Unitário:" FontSize="Medium" TextColor="Black"/>
-            <Entry Keyboard="Numeric"/>
-
-            <Button />
+            <Label Text="Preço:" FontSize="Medium" TextColor="Black"/>
+            <Entry x:Name="txt_preco" TextColor="Black"/>
 
         </StackLayout>
     </ContentPage.Content>
