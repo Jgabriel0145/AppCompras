@@ -4,5 +4,15 @@
              x:Class="AppCompras.App">
     <Application.Resources>
 
+        <ResourceDictionary>
+
+            <Style TargetType="Label" x:Key="lbl_formulario">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

@@ -75,5 +75,30 @@ namespace AppCompras.Views
             }
         
         }
+
+        private void txt_pesquisa_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string pesquisa = e.NewTextValue;
+
+            Task.Run(async () =>
+            {
+                List<Produto> list_temporaria = await App.Database.Search(pesquisa);
+
+                lista_produtos.Clear();
+
+                foreach (Produto item in list_temporaria)
+                    lista_produtos.Add(item);
+
+                ref_carregando.IsRefreshing = false;
+            });
+        }
+
+        private void lst_produtos_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            Navigation.PushAsync(new EditarProduto
+            {
+                BindingContext = (Produto)e.SelectedItem
+            });
+        }
     }
 }

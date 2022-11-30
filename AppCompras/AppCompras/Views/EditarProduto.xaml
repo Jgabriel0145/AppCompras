@@ -1,12 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AppCompras.Views.EditarProduto">
+             x:Class="AppCompras.Views.EditarProduto"
+             Title="{Binding nome}"
+             BackgroundColor="Snow">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Voltar" x:Name="tbVoltar" Clicked="tbVoltar_Clicked"/>
+        <ToolbarItem Text="Salvar" x:Name="tbSalvar" Clicked="tbSalvar_Clicked"/>
+    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="10">
+
+            <Label Text="Adicionar Produto" FontSize="Title" 
+                   HorizontalOptions="Center" TextColor="Black"/>
+
+            <Label Text="Produto:" Style="{StaticResource lbl_formulario}"/>
+            <Entry x:Name="txt_nome" ClearButtonVisibility="WhileEditing" 
+                   TextColor="Black"
+                   Text="{Binding nome}"/>
+
+            <Label Text="Quantidade:" Style="{StaticResource lbl_formulario}"/>
+            <Entry x:Name="txt_quantidade" TextColor="Black"
+                   Text="{Binding quantidade}"/>
+
+            <Label Text="Preço:" Style="{StaticResource lbl_formulario}"/>
+            <Entry x:Name="txt_preco" TextColor="Black"
+                   Text="{Binding preco}"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

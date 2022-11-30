@@ -11,19 +11,20 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Padding="10">
 
-            <SearchBar x:Name="txt_pesquisa" Placeholder="Digite o nome do produto que deseja procurar..."/>
+            <SearchBar x:Name="txt_pesquisa" Placeholder="Digite o nome do produto que deseja procurar..."
+                       TextChanged="txt_pesquisa_TextChanged"/>
 
             <RefreshView x:Name="ref_carregando" IsRefreshing="True">
 
-                <ListView x:Name="lst_produtos">
+                <ListView x:Name="lst_produtos" ItemSelected="lst_produtos_ItemSelected" Margin="5">
                     <ListView.Header>
-                        <Grid RowDefinitions="Auto" ColumnDefinitions="*, Auto, Auto">
+                        <Grid RowDefinitions="Auto" ColumnDefinitions="*, Auto, Auto" ColumnSpacing="10" RowSpacing="10">
                             
-                            <Label Grid.Row="0" Grid.Column="0" Text="Produto" TextColor="Black"/>
-                            <Label Grid.Row="0" Grid.Column="1" Text="Qtd" TextColor="Black"/>
-                            <Label Grid.Row="0" Grid.Column="2" Text="Preço" TextColor="Black"/>
+                            <Label Grid.Row="0" Grid.Column="0" Text="Produto" TextColor="Black" FontSize="Medium"/>
+                            <Label Grid.Row="0" Grid.Column="1" Text="Qtd" Style="{StaticResource lbl_formulario}"/>
+                            <Label Grid.Row="0" Grid.Column="2" Text="Preço" Style="{StaticResource lbl_formulario}"/>
                         
                         </Grid>
                     </ListView.Header>
@@ -35,11 +36,14 @@
                                     <MenuItem Text="Excluir" x:Name="miExcluir" Clicked="miExcluir_Clicked"/>
                                 </ViewCell.ContextActions>
                                 
-                                <Grid RowDefinitions="Auto" ColumnDefinitions="*, Auto, Auto">
+                                <Grid RowDefinitions="Auto" ColumnDefinitions="*, Auto, Auto" Margin="3">
 
-                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding nome}" TextColor="Black"/>
-                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding quantidade}" TextColor="Black"/>
-                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding preco}" TextColor="Black"/>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding nome}" TextColor="Black" 
+                                           FontSize="20"/>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding quantidade}" TextColor="Black"
+                                           FontSize="20" HorizontalOptions="Center"/>
+                                    <Label Grid.Row="0" Grid.Column="2" Text="{Binding preco}" TextColor="Black"
+                                           FontSize="20" />
                                 
                                 </Grid>
                             </ViewCell>

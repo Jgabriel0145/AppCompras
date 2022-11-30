@@ -23,27 +23,27 @@ namespace AppCompras.Helper
             return _conexao.InsertAsync(p);
         }
 
-        public void Update(Produto p)
+        public Task<List<Produto>> Update(Produto p)
         {
             string sql = "UPDATE Produto SET nome = ?, quantidade = ?, preco = ? WHERE id = ?";
 
-            _conexao.QueryAsync<Produto>(sql, p.nome, p.quantidade, p.preco, p.id);
+            return _conexao.QueryAsync<Produto>(sql, p.nome, p.quantidade, p.preco, p.id);
 
         }
-
         public Task<List<Produto>> Select()
         {
             return _conexao.Table<Produto>().ToListAsync();
         }
 
-        /*public Task<Produto> GetById(int id)
-        {
-            return new Produto();
-        }*/
-
         public Task<int> Delete(int id)
         {
             return _conexao.Table<Produto>().DeleteAsync(i => i.id == id);
+        }
+
+        public Task<List<Produto>> Search(string pesquisa)
+        {
+            string sql = $"SELECT * FROM Produto WHERE nome LIKE '%"+ pesquisa +"%';";
+            return _conexao.QueryAsync<Produto>(sql);
         }
     }
 }
